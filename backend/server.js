@@ -18,11 +18,17 @@ const db = require('./database')
 
 const app = express()
 
+// CORS: Allow local development and deployed Render frontend
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'https://everyone-can-pay.onrender.com'
+]
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:5174'
-  ]
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
 app.use(express.json())
@@ -299,6 +305,8 @@ app.get('/api/tests/history', (req, res) => {
       runs
     })
   } catch (error) {
+    console.error('Test history retrieval failed:', error.message)
+
     res.status(500).json({
       success: false,
       message: 'Could not retrieve test history'
@@ -341,6 +349,8 @@ app.get('/api/tests/history/:id', (req, res) => {
       results
     })
   } catch (error) {
+    console.error('Individual test retrieval failed:', error.message)
+
     res.status(500).json({
       success: false,
       message: 'Could not retrieve test results'
@@ -409,6 +419,8 @@ app.patch('/api/tests/results/:id', (req, res) => {
       message: 'Test result updated successfully'
     })
   } catch (error) {
+    console.error('Updating test result failed:', error.message)
+
     res.status(500).json({
       success: false,
       message: 'Could not update test result'
@@ -440,6 +452,8 @@ app.get('/api/dashboard/stats', (req, res) => {
       successRate
     })
   } catch (error) {
+    console.error('Dashboard statistics failed:', error.message)
+
     res.status(500).json({
       success: false,
       message: 'Could not retrieve dashboard statistics'
@@ -450,6 +464,6 @@ app.get('/api/dashboard/stats', (req, res) => {
 // START SERVER
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT, () => {
-  console.log(`Backend running at http://localhost:${PORT}`)
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Everyone Can Pay backend running on port ${PORT}`)
 })
