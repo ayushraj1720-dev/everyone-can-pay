@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 
-const API_BASE = 'http://localhost:5000'
+const API_BASE = 'http://https://everyone-can-pay-backend.onrender.com'
 
 function TestResults() {
   const [runs, setRuns] = useState([])
