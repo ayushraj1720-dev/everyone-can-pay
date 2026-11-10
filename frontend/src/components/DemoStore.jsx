@@ -18,7 +18,7 @@ function DemoStore() {
     async function loadConfig() {
       try {
         const response = await fetch(
-          'https://everyone-can-pay-backend.onrender.com/api/paypal/client-config'
+          'https://everyone-can-pay-api.onrender.com/api/paypal/client-config'
         )
 
         const data = await response.json()
@@ -67,7 +67,7 @@ function DemoStore() {
             }))
 
             const response = await fetch(
-              'https://everyone-can-pay-backend.onrender.com/api/paypal/create-order',
+              'https://everyone-can-pay-api.onrender.com/api/paypal/create-order',
               {
                 method: 'POST',
                 headers: {
@@ -99,7 +99,7 @@ function DemoStore() {
 
             try {
               const response = await fetch(
-                'https://everyone-can-pay-backend.onrender.com/api/paypal/capture-order',
+                'https://everyone-can-pay-api.onrender.com/api/paypal/capture-order',
                 {
                   method: 'POST',
                   headers: {

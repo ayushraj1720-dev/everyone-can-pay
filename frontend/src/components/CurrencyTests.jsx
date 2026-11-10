@@ -129,7 +129,7 @@ function CurrencyTests() {
             amount = product.price.toFixed(digits)
 
             const response = await fetch(
-              'https://everyone-can-pay-backend.onrender.com/api/paypal/create-order',
+              'https://everyone-can-pay-api.onrender.com/api/paypal/create-order',
               {
                 method: 'POST',
                 headers: {
@@ -180,7 +180,7 @@ function CurrencyTests() {
       setIsSaving(true)
 
       const saveResponse = await fetch(
-        'https://everyone-can-pay-backend.onrender.com/api/tests/save',
+        'https://everyone-can-pay-api.onrender.com/api/tests/save',
         {
           method: 'POST',
           headers: {
@@ -204,7 +204,7 @@ function CurrencyTests() {
 
       // RETRIEVE DATABASE RESULT IDs
       const historyResponse = await fetch(
-        `https://everyone-can-pay-backend.onrender.com/api/tests/history/${savedData.runId}`
+        `https://everyone-can-pay-api.onrender.com/api/tests/history/${savedData.runId}`
       )
 
       const historyData = await historyResponse.json()
@@ -253,7 +253,7 @@ function CurrencyTests() {
 
     try {
       const response = await fetch(
-        'https://everyone-can-pay-backend.onrender.com/api/ai/analyze-error',
+        'https://everyone-can-pay-api.onrender.com/api/ai/analyze-error',
         {
           method: 'POST',
           headers: {
@@ -285,7 +285,7 @@ function CurrencyTests() {
       // SAVE AI ANALYSIS TO SQLITE
       if (result.databaseId) {
         const saveResponse = await fetch(
-          `https://everyone-can-pay-backend.onrender.com/api/tests/results/${result.databaseId}`,
+          `https://everyone-can-pay-api.onrender.com/api/tests/results/${result.databaseId}`,
           {
             method: 'PATCH',
             headers: {
@@ -325,7 +325,7 @@ function CurrencyTests() {
 
     try {
       const response = await fetch(
-        `https://everyone-can-pay-backend.onrender.com/api/tests/results/${result.databaseId}`,
+        `https://everyone-can-pay-api.onrender.com/api/tests/results/${result.databaseId}`,
         {
           method: 'PATCH',
           headers: {

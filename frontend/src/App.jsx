@@ -5,7 +5,7 @@ import CurrencyTests from './components/CurrencyTests'
 import TestResults from './components/TestResults'
 import './App.css'
 
-const API_BASE = 'https://everyone-can-pay-backend.onrender.com'
+const API_BASE = 'https://everyone-can-pay-api.onrender.com'
 
 function StatusRow({ label, value, detail }) {
   const isConnected = [
@@ -455,7 +455,7 @@ function App() {
                     <small>API endpoint</small>
                   </div>
 
-                  <strong>https://everyone-can-pay-backend.onrender.com</strong>
+                  <strong>https://everyone-can-pay-api.onrender.com</strong>
                 </div>
 
                 <div className="recent-run">
